@@ -4,4 +4,3 @@ resource local_file "criando_arquivo" {
   file_permission      = 0777
   directory_permission = 0777
 }
- 
