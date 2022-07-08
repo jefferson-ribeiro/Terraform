@@ -72,6 +72,13 @@ resource "aws_sns_topic_subscription" "user_updates_sqs_target" {
   endpoint  = aws_lambda_function.lambda_test.arn
 }
 
+resource "aws_lambda_permission" "lambda_authorizer_permission" {
+  statement_id  = "AllowExecutionFromSNS"
+  action        = "lambda:InvokeFunction"
+  function_name = "NOME-LAMBDA"
+  principal     = "sns.amazonaws.com"
+  source_arn    = ARN-SNS
+}
 
 resource "aws_s3_bucket_notification" "s3-bucket-origin-notification" {
   bucket = aws_s3_bucket.jeff-s3-bucket-origin.id
@@ -80,4 +87,5 @@ resource "aws_s3_bucket_notification" "s3-bucket-origin-notification" {
     events        = ["s3:ObjectCreated:*"]
   }
 }
+
 
