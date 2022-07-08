@@ -75,9 +75,9 @@ resource "aws_sns_topic_subscription" "user_updates_sqs_target" {
 resource "aws_lambda_permission" "lambda_authorizer_permission" {
   statement_id  = "AllowExecutionFromSNS"
   action        = "lambda:InvokeFunction"
-  function_name = "NOME-LAMBDA"
+  function_name = "lambda_test"
   principal     = "sns.amazonaws.com"
-  source_arn    = ARN-SNS
+  source_arn    = "arn:aws:sns:us-east-1:215226549206:s3-event-notification-topic"
 }
 
 resource "aws_s3_bucket_notification" "s3-bucket-origin-notification" {
